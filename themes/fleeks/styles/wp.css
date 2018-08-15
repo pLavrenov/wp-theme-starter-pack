@@ -1,0 +1,28 @@
+/*
+Contact Form 7
+*/
+.wpcf7-response-output, span.wpcf7-not-valid-tip {
+    display: none !important;
+}
+
+.app-form__input.wpcf7-not-valid {
+    border: 3px solid #d2606c;
+}
+.clearbr > br {
+    display: none !important;
+}
+
+div.wpcf7 .ajax-loader {
+    position: absolute;
+    margin-top: 20px;
+}
+
+div.wpcf7 p:empty {
+    display: none !important;
+}
+
+@media screen and (max-width:991px) {
+    div.wpcf7 .ajax-loader {
+        margin: 17px 0 0px -25px;
+    }
+}
