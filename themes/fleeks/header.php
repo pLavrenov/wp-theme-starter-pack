@@ -24,8 +24,7 @@
             'container'=> false,
             'menu_id' => 'top-nav-ul',
             'items_wrap' => '<ul id="%1$s" class="nav navbar-nav %2$s">%3$s</ul>',
-            'menu_class' => 'top-menu',
-            'walker' => new bootstrap_menu(true)
+            'menu_class' => 'top-menu'
         );
         wp_nav_menu($args);
         ?>
