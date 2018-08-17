@@ -5,7 +5,7 @@
 get_header(); ?>
 
 <div>
-    <?php get_template_part( 'tpl/path/header-block' ); ?>
+    <?php //get_template_part( 'tpl/path/' ); ?>
 </div>
 
 <?php get_footer(); ?>
