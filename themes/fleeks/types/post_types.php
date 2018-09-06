@@ -34,6 +34,11 @@ function taxonomy_slug_rewrite($wp_rewrite) {
 }
 add_filter('generate_rewrite_rules', 'taxonomy_slug_rewrite');
 
+function custom_taxonomy_flush_rewrite() {
+    global $wp_rewrite;
+    $wp_rewrite->flush_rules();
+}
+add_action('init', 'custom_taxonomy_flush_rewrite');
 
 /*
  * https://someweblog.com/wordpress-custom-taxonomy-with-same-slug-as-custom-post-type/
