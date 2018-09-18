@@ -10,7 +10,6 @@ require_once( __DIR__ . '/includes/include_helper_hooks.php');
 require_once( __DIR__ . '/includes/include-tmg-plugins.php');
 
 
-
 add_theme_support('title-tag');
 
 register_nav_menus(array(
