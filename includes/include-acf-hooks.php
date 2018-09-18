@@ -1,36 +1,13 @@
 <?php
 
-require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+if( function_exists('acf_add_options_page') ) {
 
-// проверяем активность плагина CF7
-if(is_plugin_active( 'contact-form-7/wp-contact-form-7.php' )) :
+    $option_page = acf_add_options_page(array(
+        'page_title' 	=> 'Общие настройки',
+        'menu_title' 	=> 'Общие настройки',
+        'menu_slug' 	=> 'all-settings',
+        'capability' 	=> 'edit_posts',
+        'redirect' 	=> false
+    ));
 
-add_filter('wpcf7_autop_or_not', '__return_false');
-
-
-add_action('wp_footer', 'acf_listen_mail_sent');
-function acf_listen_mail_sent() {
-    ?>
-    <script type="text/javascript">
-        document.addEventListener( 'wpcf7mailsent', function( event ) {
-            if (window.jQuery) {
-                if(typeof $.fancybox !== "undefined") {
-                    $.fancybox.open({
-                        src  : '#modal-thank-you'
-                    });
-                }
-            }
-            /*
-            if ( '123' == event.detail.contactFormId ) {
-                //ga( 'send', 'event', 'Contact Form', 'submit' );
-            }
-            */
-        }, false );
-    </script>
-    <?php
 }
-
-
-
-
-endif;
