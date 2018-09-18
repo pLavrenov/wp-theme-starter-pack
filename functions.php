@@ -8,6 +8,7 @@ require_once( __DIR__ . '/includes/include-cf7-hooks.php');
 require_once( __DIR__ . '/includes/include_helper_func.php');
 require_once( __DIR__ . '/includes/include_helper_hooks.php');
 require_once( __DIR__ . '/includes/include-tmg-plugins.php');
+require_once( __DIR__ . '/includes/include-acf-hooks.php');
 
 
 add_theme_support('title-tag');
