@@ -1,5 +1,7 @@
 <?php
 // Ajax загрузка новостей
+add_action('wp_ajax_loadmore', 'load_more');
+add_action('wp_ajax_nopriv_loadmore', 'load_more');
 function load_more(){
     $args = unserialize( stripslashes( $_POST['query'] ) );
     $args['paged'] = $_POST['page'] + 1; // следующая страница
@@ -17,5 +19,3 @@ function load_more(){
     }
     die();
 }
-add_action('wp_ajax_loadmore', 'load_more');
-add_action('wp_ajax_nopriv_loadmore', 'load_more');

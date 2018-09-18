@@ -6,9 +6,9 @@ require_once( __DIR__ . '/includes/include_define_const.php');
 require_once( __DIR__ . '/includes/include_load_more_items.php');
 require_once( __DIR__ . '/includes/include-cf7-hooks.php');
 require_once( __DIR__ . '/includes/include_helper_func.php');
-//require_once( __DIR__ . '/includes/include-tmg-plugins.php');
+require_once( __DIR__ . '/includes/include-tmg-plugins.php');
 
-add_filter('wpcf7_autop_or_not', '__return_false');
+
 
 add_theme_support('title-tag');
 
@@ -42,37 +42,3 @@ if (!function_exists('add_styles')) {
 }
 
 
-// Загрузка .svg в библиатеку
-function add_file_types_to_uploads($file_types){
-    $new_filetypes = array();
-    $new_filetypes['svg'] = 'image/svg+xml';
-    $file_types = array_merge($file_types, $new_filetypes );
-    return $file_types;
-}
-add_action('upload_mimes', 'add_file_types_to_uploads');
-
-function drussify_months( $date, $req_format ){
-    // в формате есть "строковые" неделя или месяц
-    if( ! preg_match('~[FMlS]~', $req_format ) ) return $date;
-
-    $replace = array (
-        "январь" => "января", "Февраль" => "февраля", "Март" => "марта", "Апрель" => "апреля", "Май" => "мая", "Июнь" => "июня", "Июль" => "июля", "Август" => "августа", "Сентябрь" => "сентября", "Октябрь" => "октября", "Ноябрь" => "ноября", "Декабрь" => "декабря",
-        "January" => "января", "February" => "февраля", "March" => "марта", "April" => "апреля", "May" => "мая", "June" => "июня", "July" => "июля", "August" => "августа", "September" => "сентября", "October" => "октября", "November" => "ноября", "December" => "декабря",
-        "Jan" => "янв.", "Feb" => "фев.", "Mar" => "март.", "Apr" => "апр.", "May" => "мая", "Jun" => "июня", "Jul" => "июля", "Aug" => "авг.", "Sep" => "сен.", "Oct" => "окт.", "Nov" => "нояб.", "Dec" => "дек.",
-        "Sunday" => "воскресенье", "Monday" => "понедельник", "Tuesday" => "вторник", "Wednesday" => "среда", "Thursday" => "четверг", "Friday" => "пятница", "Saturday" => "суббота",
-        "Sun" => "вос.", "Mon" => "пон.", "Tue" => "вт.", "Wed" => "ср.", "Thu" => "чет.", "Fri" => "пят.", "Sat" => "суб.", "th" => "", "st" => "", "nd" => "", "rd" => "",
-    );
-
-    return strtr( $date, $replace );
-}
-add_filter('date_i18n', 'drussify_months', 11, 2);
-
-function starter_scripts() {
-    wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
-    wp_enqueue_script( 'jquery' );
-
-    wp_enqueue_style( 'starter-style', get_stylesheet_uri() );
-    wp_enqueue_script( 'includes', get_template_directory_uri() . '/js/min/includes.min.js', '', '', true );
-}
-add_action( 'wp_enqueue_scripts', 'starter_scripts' );
