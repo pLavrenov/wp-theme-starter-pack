@@ -6,6 +6,7 @@ require_once( __DIR__ . '/includes/include_define_const.php');
 require_once( __DIR__ . '/includes/include_load_more_items.php');
 require_once( __DIR__ . '/includes/include-cf7-hooks.php');
 require_once( __DIR__ . '/includes/include_helper_func.php');
+require_once( __DIR__ . '/includes/include_helper_hooks.php');
 require_once( __DIR__ . '/includes/include-tmg-plugins.php');
 
 
