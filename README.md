@@ -1,12 +1,18 @@
-# wp-theme-starter-pack
+# Шаблон для разработки Wordpress
+
+Что включает:
+* Пример создания кастомные типы постов и таксономий
+* Логичная обработка ссылок таксономии
+* Пример Ajax подгрузка постов
+* Автоматическая установка необходимых плагинов TMG
+* Добавление страницы глобальных настроек
+* Экшн с появлением модального окна "Спасибо" при успешной отправке ContactForm7 + исправление бесячей простановки `<p>` тегов в формы
+* ACF:Pro в комплекте.
+* qTranslate X для перевода дополнительных полей
+* И еще что-нибудь..  
+  
+### Полезные ссылки
+* Файлы темы: https://github.com/saxap/clean-wp-template, тут есть с комментариями.
+* ACFPro: https://github.com/wp-premium/advanced-custom-fields-pro
 
 
-
-THEME_NAME
-THEME_URI
-THEME_VERSION
-THEME_TAG
-THEME_DESCRIPTION
-THEME_AUTHOR
-THEME_AUTHOR_URI
-COMPANY-NAME
