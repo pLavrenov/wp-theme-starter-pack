@@ -6,7 +6,7 @@ function my_acf_init() {
     if( function_exists('acf_add_options_page') ) {
 
         // Список блоков
-        require_once(__DIR__ . 'include-acf-init-options.php');
+        require_once(__DIR__ . '/include-acf-init-options.php');
 
     }
 
@@ -14,7 +14,7 @@ function my_acf_init() {
     if( function_exists('acf_register_block') ) {
 
         // Список блоков
-        require_once(__DIR__ . 'include-acf-init-blocks.php');
+        require_once(__DIR__ . '/include-acf-init-blocks.php');
 
     }
 
@@ -27,9 +27,9 @@ function my_acf_block_render_callback( $block ) {
     $slug = str_replace('acf/', '', $block['name']);
 
     // include a template part from within the "template-parts/block" folder
-    if( file_exists( __DIR__ . "blocks/block-{$slug}.php") ) {
+    if( file_exists( __DIR__ . "/blocks/block-{$slug}.php") ) {
 
-        require_once( __DIR__ . "blocks/block-{$slug}.php" );
+        require_once( __DIR__ . "/blocks/block-{$slug}.php" );
 
     }
 
