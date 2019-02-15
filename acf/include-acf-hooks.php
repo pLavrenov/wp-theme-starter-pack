@@ -18,6 +18,13 @@ function my_acf_init() {
 
     }
 
+    // Добавление полей через код
+    if( function_exists('acf_add_local_field_group') ) {
+        // Список полей
+        require_once(__DIR__ . '/include-acf-option-fields.php');
+
+    }
+
 }
 
 
