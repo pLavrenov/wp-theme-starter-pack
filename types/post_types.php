@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/post_types/create_post_type.php');
 require_once(__DIR__ . '/taxonomy/create_taxonomy.php');
+//require_once(__DIR__ . '/taxonomy_list_fields/create_list_field.php');
 
 function taxonomy_slug_rewrite($wp_rewrite) {
     $rules = array();
