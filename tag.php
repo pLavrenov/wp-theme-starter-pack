@@ -4,7 +4,7 @@
  * @package WordPress
  * @subpackage your-clean-template-3
  */
-get_header(); ?> 
+get_header(); ?>
 <section>
 	<div class="container">
 		<div class="row">
@@ -13,8 +13,7 @@ get_header(); ?>
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<?php get_template_part('loop'); ?>
 				<?php endwhile;
-				else: echo '<p>Нет записей.</p>'; endif; ?>	 
-				<?php pagination(); ?>
+				else: echo '<p>Нет записей.</p>'; endif; ?>
 			</div>
 			<?php get_sidebar(); ?>
 		</div>
