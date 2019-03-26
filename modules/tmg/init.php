@@ -1,7 +1,7 @@
 <?php
-require_once get_template_directory() . '/plugins/class-tgm-plugin-activation.php';
-add_action( 'tgmpa_register', 'fleeks_register_required_plugins' );
+require_once(__DIR__ . '/class-tgm-plugin-activation.php');
 
+add_action( 'tgmpa_register', 'fleeks_register_required_plugins' );
 function fleeks_register_required_plugins() {
     $plugins = array(
 
