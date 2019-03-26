@@ -28,6 +28,19 @@ function my_acf_init() {
 
 }
 
+add_filter( 'block_categories', 'acf_add_category_blocks', 10, 2 );
+function acf_add_category_blocks( $categories, $post ) {
+    return array_merge(
+        $categories,
+        [
+            [
+                'slug' => 'fleeks',
+                'title' => __( 'Fleeks.Блоки', 'fleeks_admin' ),
+                'icon'  => 'wordpress',
+            ]
+        ]
+    );
+}
 
 function my_acf_block_render_callback( $block ) {
 
