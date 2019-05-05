@@ -8,7 +8,7 @@ function fleeks_register_required_plugins() {
         array(
             'name'               => 'ACF: Pro',
             'slug'               => 'advanced-custom-fields-pro',
-            'source'             => 'https://github.com/wp-premium/advanced-custom-fields-pro/archive/master.zip',
+            'source'             => 'https://dev.fleeks-host.ru/plugins/wordpress/advanced-custom-fields-pro-v5.zip',
             'required'           => true,
             'force_activation'   => true,
             'force_deactivation' => true,

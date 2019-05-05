@@ -28,15 +28,20 @@ get_header(); ?>
         } ?>
     </div>
 
-    <?php if (  $wp_query->max_num_pages > 1 ) : ?>
-        <script>
-            var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
-            var true_posts = '<?php echo serialize($wp_query->query_vars); ?>';
-            var current_page = <?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>;
-            var max_pages = '<?php echo $wp_query->max_num_pages; ?>';
-            var action = 'loadmore_filter';
-        </script>
+    <div id="empty_load_list" style="display: none;">
+        <p><?php _e('Нет результатов', 'fleeks_theme') ?></p>
+    </div>
 
+
+    <script>
+        var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
+        var true_posts = '<?php echo serialize($wp_query->query_vars); ?>';
+        var current_page = <?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>;
+        var max_pages = '<?php echo $wp_query->max_num_pages; ?>';
+        var action = 'loadmore_filter';
+    </script>
+
+    <?php if (  $wp_query->max_num_pages > 1 ) : ?>
         <div class="butncenter" style="text-align: center;margin-bottom: 30px;">
             <div id="filter_loadmore" class="cardk__order-buy"
                  data-text-loaded="<?php _e('Показать еще', 'fleeks_theme') ?>"
@@ -45,7 +50,6 @@ get_header(); ?>
                 <?php _e('Показать еще', 'fleeks_theme') ?>
             </div>
         </div>
-
     <?php endif; ?>
 
     <?php wp_reset_query(); ?>

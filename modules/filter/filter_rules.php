@@ -1,119 +1,155 @@
 <?php
 
-add_filter( 'add_filter_rules', 'filter_rules' );
+add_filter( 'add_filter_rules', 'filter_rules', 10, 2 );
 function filter_rules($rules, $post){
 
-    /*
-        if (isset($_POST['filter']['projects_square']) && $_POST['filter']['projects_square'] != '') {
-            $args['tax_query'][] = [
-                [
-                    'taxonomy' => 'projects_square',
-                    'field'    => 'term_id',
-                    'terms'    => $_POST['filter']['projects_square'],
-                ]
-            ];
-        }
+    $rules['meta_query'] = [];
 
-        if (isset($_POST['filter']['floor_count']) && $_POST['filter']['floor_count'] != '') {
-            $args['tax_query'][] = [
-                [
-                    'taxonomy' => 'projects_floor',
-                    'field'    => 'term_id',
-                    'terms'    => $_POST['filter']['floor_count'],
-                ]
-            ];
-        }
+    $rules['meta_query']['relation'] = 'AND';
+    $rules['tax_query']['relation'] = 'AND';
 
-        if (isset($_POST['filter']['rooms_count']) && $_POST['filter']['rooms_count'] != '') {
-            $args['meta_query'][] = [
-                [
-                    'key' => 'количество_спален',
-                    'value' => $_POST['filter']['rooms_count'],
-                    'compare' => '=',
-                    'type' => 'NUMERIC',
-                ]
-            ];
-        }
-
-        if (isset($_POST['filter']['price']['min']) && isset($_POST['filter']['price']['max'])) {
-            $args['meta_query'][] = [
-                [
-                    'key' => 'цена_проекта',
-                    'value' => [$_POST['filter']['price']['min'], $_POST['filter']['price']['max']],
-                    'compare' => 'BETWEEN',
-                    'type' => 'NUMERIC',
-                ]
-            ];
-        }
-
-            if (isset($_POST['filter']['price']['min']) && isset($_POST['filter']['price']['max'])) {
-                $args['meta_query'][] = [
-                    [
-                        'key' => 'стоимость',
-                        'value' => [$_POST['filter']['price']['min'], $_POST['filter']['price']['max']],
-                        'compare' => 'BETWEEN',
-                        'type' => 'NUMERIC',
-                    ]
-                ];
-            }
-
-            if (isset($_POST['filter']['area']['min']) && isset($_POST['filter']['area']['max'])) {
-                $args['meta_query'][] = [
-                    [
-                        'key' => 'общая_площадь',
-                        'value' => [$_POST['filter']['area']['min'], $_POST['filter']['area']['max']],
-                        'compare' => 'BETWEEN',
-                        'type' => 'NUMERIC',
-                    ]
-                ];
-            }
-
-            if (isset($_POST['filter']['terrace']['min']) && isset($_POST['filter']['terrace']['max'])) {
-                $args['meta_query'][] = [
-                    [
-                        'key' => 'площадь_терасс',
-                        'value' => [$_POST['filter']['terrace']['min'], $_POST['filter']['terrace']['max']],
-                        'compare' => 'BETWEEN',
-                        'type' => 'NUMERIC',
-                    ]
-                ];
-            }
-
-            if (isset($_POST['filter']['floor']) && $_POST['filter']['floor'] != '') {
-                $args['meta_query'][] = [
-                    [
-                        'key' => 'этажность',
-                        'value' => $_POST['filter']['floor'],
-                        'compare' => '=',
-                        'type' => 'NUMERIC',
-                    ]
-                ];
-            }
-
-            if (isset($_POST['filter']['bedroom']) && $_POST['filter']['bedroom'] != '') {
-                $args['meta_query'][] = [
-                    [
-                        'key' => 'количество_спален',
-                        'value' => $_POST['filter']['bedroom'],
-                        'compare' => '=',
-                        'type' => 'NUMERIC',
-                    ]
-                ];
-            }
-
-
-        */
-
-    /*
-    if ($_POST['filter']['sort_by'] != 'date') {
-        $args['meta_key'] = $_POST['filter']['sort_by'];
-        $args['orderby'] = 'meta_value_num';
+    // Вид
+    if (is_array($post['types'])) {
+        $rules['meta_query'][] = [
+            [
+                'key' => 'вид_продукта',
+                'value'    => $post['types'],
+                'compare'  => 'IN',
+            ]
+        ];
     }
 
-    if ($_POST['filter']['order_by'] == 'DESC' || $_POST['filter']['order_by'] == 'ASC') {
-        $args['order'] = $_POST['filter']['order_by'];
+    // Цена
+    if (is_array($post['price'])) {
+        $rules['meta_query'][] = [
+            [
+                'key' => '_new_price',
+                'value' => [
+                    intval($post['price']['min']),
+                    intval($post['price']['max'])
+                ],
+                'compare' => 'BETWEEN',
+                'type' => 'NUMERIC',
+            ]
+        ];
+    }
+
+    // Ширина
+    if (is_array($post['width'])) {
+        $rules['meta_query'][] = [
+            [
+                'key' => 'ширина',
+                'value' => [
+                    intval($post['width']['min']),
+                    intval($post['width']['max'])
+                ],
+                'compare' => 'BETWEEN',
+                'type' => 'NUMERIC',
+            ]
+        ];
+    }
+
+    // Вынос
+    if (is_array($post['long'])) {
+        $rules['meta_query'][] = [
+            [
+                'key' => 'вынос',
+                'value' => $post['long'],
+                'compare'  => 'IN',
+            ]
+        ];
+    }
+
+    // Цвет товара
+    if (is_array($post['product_color_scheme'])) {
+        $rules['tax_query'][] = [
+            [
+                'taxonomy' => 'product_color_scheme',
+                'field'    => 'slug',
+                'operator'  => 'IN',
+                'terms'    => $post['product_color_scheme'],
+            ]
+        ];
+    }
+
+
+    // Ветровая нагрузка
+    if ($post['wind']) {
+        $rules['meta_query'][] = [
+            [
+                'key' => 'ветровая_нагрузка',
+                'value' => intval($post['wind']),
+                'compare' => '<=',
+                'type' => 'NUMERIC',
+            ]
+        ];
+    }
+
+    // Электропривод
+    if ($post['rotor'] != '') {
+        $rules['meta_query'][] = [
+            [
+                'key' => 'электропривод',
+                'value' => $post['rotor'],
+                'compare' => '=',
+            ]
+        ];
+    }
+
+    /*
+     *
+     *  Неиспользуемые
+     *
+    if (is_array($post['product_types'])) {
+        $rules['tax_query'][] = [
+            [
+                'taxonomy' => 'product_types',
+                'field'    => 'slug',
+                'operator'  => 'IN',
+                'terms'    => $post['product_types'],
+            ]
+        ];
+    }
+
+    if (is_array($post['product_cloth'])) {
+        $rules['tax_query'][] = [
+            [
+                'taxonomy' => 'product_cloth',
+                'field'    => 'slug',
+                'operator'  => 'IN',
+                'terms'    => $post['product_cloth'],
+            ]
+        ];
     }
     */
+
+
+    if (is_string($post['sort'])) {
+
+        // meta_value_num meta_value
+
+        switch ($post['sort']) {
+            case 'price':
+                $rules['meta_key'] = '_new_price';
+                $rules['orderby'] = 'meta_value_num';
+                break;
+            case 'sale':
+                $rules['meta_key'] = '_new_discount';
+                $rules['orderby'] = 'meta_value_num';
+                break;
+            case 'popular':
+                $rules['meta_key'] = 'цена';
+                $rules['orderby'] = 'meta_value_num';
+                break;
+            default:
+                $rules['orderby'] = 'date';
+        }
+
+    }
+
+    if ($post['order'] == 'DESC' || $post['order'] == 'ASC') {
+        $rules['order'] = $post['order'];
+    }
 
     return $rules;
 }
