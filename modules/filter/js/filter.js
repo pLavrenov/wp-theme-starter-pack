@@ -71,6 +71,7 @@ if ($('[filters-block]').length > 0) {
     function load_more_projects(data) {
         var jdata = JSON.parse(data);
 
+        $load_btn.text($load_btn.data('text-loaded'));
         $filter_post_counter.text(parseInt(jdata.count));
 
         (jdata.count == 0) ? $empty_load_list.show() : $empty_load_list.hide();
@@ -86,7 +87,7 @@ if ($('[filters-block]').length > 0) {
 
     // Загрузка в список
     $load_btn.click(function(){
-        $(this).text($(this).data('text-loaded'));
+        $(this).text($(this).data('text-loading'));
         update_projects_list(false);
     });
 
