@@ -48,7 +48,7 @@ function compare_length_items() {
     return items.length;
 }
 
-$('[data-compare-add]').on('click', function() {
+function compare_add_func() {
     var pid = $(this).data('compare-add').toString();
     var storage_items = compare_get_items();
     if (storage_items.indexOf(pid) == -1) {
@@ -60,7 +60,9 @@ $('[data-compare-add]').on('click', function() {
     }
     compare_set_items(storage_items);
     compare_set_count();
-});
+}
+
+$("body").on("click","[data-compare-add]", compare_add_func);
 
 $('[data-compare-href]').click(function() {
     const items = compare_get_items();
