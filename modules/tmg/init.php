@@ -6,15 +6,6 @@ function fleeks_register_required_plugins() {
     $plugins = array(
 
         array(
-            'name'               => 'ACF: Pro',
-            'slug'               => 'advanced-custom-fields-pro',
-            'source'             => 'https://dev.fleeks-host.ru/plugins/wordpress/advanced-custom-fields-pro-v5.zip',
-            'required'           => true,
-            'force_activation'   => true,
-            'force_deactivation' => true,
-        ),
-
-        array(
             'name'               => 'Contact Form 7',
             'slug'               => 'contact-form-7',
             'required'           => true,
@@ -31,24 +22,27 @@ function fleeks_register_required_plugins() {
         ),
 
         array(
-            'name'               => 'qTranslate-X',
-            'slug'               => 'qtranslate-x',
+            'name'               => 'qTranslate-XT',
+            'slug'               => 'qtranslate-xt',
+            'source'               => 'https://github.com/qtranslate/qtranslate-xt/archive/3.9.2.zip',
             'required'           => true,
             'force_activation'   => true,
             'force_deactivation' => true,
         ),
 
-        array(
-            'name'               => 'Advanced Custom Fields: qTranslate',
-            'slug'               => 'acf-qtranslate',
-            'required'           => true,
-            'force_activation'   => true,
-            'force_deactivation' => true,
-        ),
 
         array(
             'name'               => 'Rus filename and link translit',
             'slug'               => 'rus-to-lat-advanced',
+            'required'           => true,
+            'force_activation'   => true,
+            'force_deactivation' => true,
+        ),
+
+
+        array(
+            'name'               => 'Disable Gutenberg',
+            'slug'               => 'disable-gutenberg',
             'required'           => true,
             'force_activation'   => true,
             'force_deactivation' => true,
