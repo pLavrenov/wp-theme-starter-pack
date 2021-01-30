@@ -1,6 +1,6 @@
 <?php
 
-// Загрузка .svg в библиатеку
+## Загрузка .svg в библиатеку
 add_action('upload_mimes', 'add_file_types_to_uploads');
 function add_file_types_to_uploads($file_types){
     $new_filetypes = array();
@@ -9,12 +9,10 @@ function add_file_types_to_uploads($file_types){
     return $file_types;
 }
 
-
+## Русские месяцы
 add_filter('date_i18n', 'drussify_months', 11, 2);
 function drussify_months( $date, $req_format ){
-    // в формате есть "строковые" неделя или месяц
     if( ! preg_match('~[FMlS]~', $req_format ) ) return $date;
-
     $replace = array (
         "январь" => "января", "Февраль" => "февраля", "Март" => "марта", "Апрель" => "апреля", "Май" => "мая", "Июнь" => "июня", "Июль" => "июля", "Август" => "августа", "Сентябрь" => "сентября", "Октябрь" => "октября", "Ноябрь" => "ноября", "Декабрь" => "декабря",
         "January" => "января", "February" => "февраля", "March" => "марта", "April" => "апреля", "May" => "мая", "June" => "июня", "July" => "июля", "August" => "августа", "September" => "сентября", "October" => "октября", "November" => "ноября", "December" => "декабря",
@@ -22,13 +20,10 @@ function drussify_months( $date, $req_format ){
         "Sunday" => "воскресенье", "Monday" => "понедельник", "Tuesday" => "вторник", "Wednesday" => "среда", "Thursday" => "четверг", "Friday" => "пятница", "Saturday" => "суббота",
         "Sun" => "вос.", "Mon" => "пон.", "Tue" => "вт.", "Wed" => "ср.", "Thu" => "чет.", "Fri" => "пят.", "Sat" => "суб.", "th" => "", "st" => "", "nd" => "", "rd" => "",
     );
-
     return strtr( $date, $replace );
 }
 
-/* --------------------------------------------------------------------------
- * Отключаем Emojii
- * -------------------------------------------------------------------------- */
+## Отключаем Emojii
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -44,3 +39,8 @@ function disable_wp_emojis_in_tinymce( $plugins ) {
         return array();
     }
 }
+
+## Удаляет "Рубрика: ", "Метка: " и т.д. из заголовка архива -- get_the_archive_title()
+add_filter( 'get_the_archive_title', function( $title ){
+    return preg_replace('~^[^:]+: ~', '', $title );
+});
