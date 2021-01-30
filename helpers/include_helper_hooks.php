@@ -44,3 +44,38 @@ function disable_wp_emojis_in_tinymce( $plugins ) {
 add_filter( 'get_the_archive_title', function( $title ){
     return preg_replace('~^[^:]+: ~', '', $title );
 });
+
+
+## Добавление стилей для стандартного меню
+add_filter('nav_menu_css_class', 'add_menu_list_item_class', 1, 3);
+function add_menu_list_item_class($classes, $item, $args) {
+    if (property_exists($args, 'li_class') && !$item->menu_item_parent) {
+        $classes[] = $args->li_class;
+    }
+    if (property_exists($args, 'li_child_class') && $item->menu_item_parent) {
+        $classes[] = $args->li_child_class;
+    }
+    return $classes;
+}
+
+add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 1, 3 );
+function add_menu_link_class( $atts, $item, $args ) {
+    if ( strpos( $atts['href'], home_url() ) === false ) {
+        $atts['target'] = '_blank';
+    }
+    if (property_exists($args, 'a_class') && !$item->menu_item_parent) {
+        $atts['class'] = $args->a_class;
+    }
+    if (property_exists($args, 'a_child_class') && $item->menu_item_parent) {
+        $atts['class'] = $args->a_child_class;
+    }
+    return $atts;
+}
+
+add_filter( 'nav_menu_submenu_css_class', 'my_nav_menu_submenu_css_class', 1, 3);
+function my_nav_menu_submenu_css_class($classes, $args, $depth) {
+    if (property_exists($args, 'ul_child_class')) {
+        $classes[] = $args->ul_child_class;
+    }
+    return $classes;
+}
