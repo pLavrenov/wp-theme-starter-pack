@@ -1,0 +1,12 @@
+.context-provider {
+	border: 2px dotted red;
+	padding: 1rem;
+}
+
+.highlight--provider {
+	background-color: #ff000054;
+}
+
+.xdebug-var-dump > small:first-of-type {
+	display: none;
+}

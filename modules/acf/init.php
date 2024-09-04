@@ -2,6 +2,7 @@
 
 // Define path and URL to the ACF plugin.
 define( 'MY_ACF_PATH', get_stylesheet_directory() . '/modules/acf/plugin/' );
+define( 'MY_ACF_BLOCKS_PATH', get_stylesheet_directory() . '/modules/acf/blocks/' );
 define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/modules/acf/plugin/' );
 
 // Include the ACF plugin.
@@ -68,9 +69,9 @@ function my_acf_block_render_callback( $block ) {
     $slug = str_replace('acf/', '', $block['name']);
 
     // include a template part from within the "template-parts/block" folder
-    if( file_exists( __DIR__ . "/blocks/block-{$slug}.php") ) {
+    if( file_exists( __DIR__ . "/blocks/{$slug}.php") ) {
 
-        require_once( __DIR__ . "/blocks/block-{$slug}.php" );
+        require( __DIR__ . "/blocks/{$slug}.php" );
 
     }
 

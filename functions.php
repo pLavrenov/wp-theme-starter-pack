@@ -11,10 +11,11 @@ require_once( __DIR__ . '/helpers/include_helper_const.php');
 ## Modules (Required)
 require_once( __DIR__ . '/modules/tmg/init.php');
 require_once(__DIR__ . '/modules/acf/init.php');
+require_once(__DIR__ . '/modules/acf-menu/init.php');
 
 ## Modules
-require_once(__DIR__ . '/modules/breadcrumbs/init.php');
-require_once( __DIR__ . '/modules/load_more/init.php');
+//require_once(__DIR__ . '/modules/breadcrumbs/init.php');
+//require_once( __DIR__ . '/modules/load_more/init.php');
 //require_once(__DIR__ . '/modules/pagination/init.php');
 //require_once(__DIR__ . '/modules/sidebars/add_sidebars.php');
 //require_once(__DIR__ . '/modules/compare/init.php');
