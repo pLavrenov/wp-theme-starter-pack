@@ -21,14 +21,14 @@ function fleeks_register_required_plugins() {
             'force_deactivation' => true,
         ),
 
-        array(
-            'name'               => 'qTranslate-XT',
-            'slug'               => 'qtranslate-xt',
-            'source'               => 'https://github.com/qtranslate/qtranslate-xt/archive/3.9.2.zip',
-            'required'           => true,
-            'force_activation'   => true,
-            'force_deactivation' => true,
-        ),
+//        array(
+//            'name'               => 'qTranslate-XT',
+//            'slug'               => 'qtranslate-xt',
+//            'source'               => 'https://github.com/qtranslate/qtranslate-xt/archive/3.9.2.zip',
+//            'required'           => true,
+//            'force_activation'   => true,
+//            'force_deactivation' => true,
+//        ),
 
 
         array(
@@ -40,13 +40,13 @@ function fleeks_register_required_plugins() {
         ),
 
 
-        array(
-            'name'               => 'Disable Gutenberg',
-            'slug'               => 'disable-gutenberg',
-            'required'           => true,
-            'force_activation'   => true,
-            'force_deactivation' => true,
-        ),
+//        array(
+//            'name'               => 'Disable Gutenberg',
+//            'slug'               => 'disable-gutenberg',
+//            'required'           => true,
+//            'force_activation'   => true,
+//            'force_deactivation' => true,
+//        ),
 
 
 
