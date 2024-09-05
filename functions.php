@@ -4,9 +4,12 @@
 require_once( __DIR__ . '/types/post_types.php');
 
 ## Хелперы
-require_once( __DIR__ . '/helpers/include_helper_func.php');
-require_once( __DIR__ . '/helpers/include_helper_hooks.php');
-require_once( __DIR__ . '/helpers/include_helper_const.php');
+require_once(__DIR__ . '/includes/helpers/include_helper_func.php');
+require_once(__DIR__ . '/includes/helpers/include_helper_hooks.php');
+require_once(__DIR__ . '/includes/helpers/include_helper_const.php');
+
+## Hooks
+require_once(__DIR__ . '/includes/hooks/include_cf7_hooks.php');
 
 ## Modules (Required)
 require_once( __DIR__ . '/modules/tmg/init.php');
@@ -20,10 +23,6 @@ require_once(__DIR__ . '/modules/acf-menu/init.php');
 //require_once(__DIR__ . '/modules/sidebars/add_sidebars.php');
 //require_once(__DIR__ . '/modules/compare/init.php');
 //require_once(__DIR__ . '/modules/filter/init.php');
-
-## Hooks
-require_once( __DIR__ . '/includes/include_cf7_hooks.php');
-
 
 
 
@@ -45,8 +44,8 @@ if (!function_exists('add_scripts')) {
 	function add_scripts() {
 	    if(is_admin()) return false;
 	    wp_deregister_script('jquery');
-	    wp_enqueue_script('main', get_template_directory_uri().'/scripts/main.min.js', false, '0.0.1', true);
-        wp_enqueue_script('loadmore',get_template_directory_uri().'/scripts/loadmore.js', ['main'], '0.0.1', true);
+	    wp_enqueue_script('main', FOLDER . '/assets/scripts/main.min.js', false, FLEEKS_VERSION, true);
+        wp_enqueue_script('loadmore', FOLDER . '/assets/scripts/loadmore.js', ['main'], FLEEKS_VERSION, true);
 	}
 }
 
@@ -55,7 +54,7 @@ add_action('wp_print_styles', 'add_styles');
 if (!function_exists('add_styles')) {
 	function add_styles() {
 	    if(is_admin()) return false;
-		wp_enqueue_style( 'main', get_template_directory_uri().'/styles/main.css', false, '0.0.1' );
-		wp_enqueue_style( 'wp', get_template_directory_uri().'/styles/wp.css', ['main'], '0.0.1' );
+		wp_enqueue_style( 'main', FOLDER . '/assets/styles/main.css', false, FLEEKS_VERSION );
+		wp_enqueue_style( 'wp', FOLDER . '/assets/styles/wp.css', ['main'], FLEEKS_VERSION );
 	}
 }

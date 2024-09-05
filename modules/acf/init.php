@@ -2,7 +2,7 @@
 
 // Define path and URL to the ACF plugin.
 define( 'MY_ACF_PATH', get_stylesheet_directory() . '/modules/acf/plugin/' );
-define( 'MY_ACF_BLOCKS_PATH', get_stylesheet_directory() . '/modules/acf/blocks/' );
+define( 'MY_ACF_BLOCKS_PATH', get_stylesheet_directory() . '/views/blocks/' );
 define( 'MY_ACF_URL', get_stylesheet_directory_uri() . '/modules/acf/plugin/' );
 
 // Include the ACF plugin.
@@ -17,7 +17,7 @@ function my_acf_settings_url( $url ) {
 // (Optional) Hide the ACF admin menu item.
 add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
 function my_acf_settings_show_admin( $show_admin ) {
-    return true;
+    return FLEEKS_DEV;
 }
 
 add_action('acf/init', 'my_acf_init');
@@ -69,10 +69,9 @@ function my_acf_block_render_callback( $block ) {
     $slug = str_replace('acf/', '', $block['name']);
 
     // include a template part from within the "template-parts/block" folder
-    if( file_exists( __DIR__ . "/blocks/{$slug}.php") ) {
-
-        require( __DIR__ . "/blocks/{$slug}.php" );
-
+    if( file_exists( MY_ACF_BLOCKS_PATH . "{$slug}.php") )
+    {
+        require(MY_ACF_BLOCKS_PATH . "{$slug}.php");
     }
 
 }

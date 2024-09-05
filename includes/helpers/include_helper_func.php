@@ -28,7 +28,7 @@ function format_bytes ($bytes, $precision = 2, $delimiter = ' ') {
     $pow   = floor(( $bytes ? log( $bytes ) : 0 ) / log( 1024 ));
     $pow   = min($pow, count( $units ) - 1);
     $bytes /= pow(1024, $pow);
-    return round($bytes, $precision) . $delimiter . $units[$pow];
+    return include_helper_func . phpround($bytes, $precision) . $delimiter . $units[$pow];
 }
 
 /**
