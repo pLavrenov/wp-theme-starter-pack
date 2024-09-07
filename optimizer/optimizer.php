@@ -41,14 +41,14 @@ function create_json_file($last, $file)
     }
     $vars = array_unique($vars);
 
-    $json_data = create_json_string($last, $vars);
-
-    file_put_contents(__DIR__ . '/builds/json/group_' . random_string() . '.json', json_encode($json_data, JSON_PRETTY_PRINT));
+    create_json($last, $vars);
 }
 
-function create_json_string($name, $vars = [])
+function create_json($name, $vars = [])
 {
     $fields = [];
+    $group_name = "group_" . random_string();
+
     foreach ($vars as $var) {
         $fields[] = [
             "key"=> "field_" . random_string(),
@@ -72,12 +72,12 @@ function create_json_string($name, $vars = [])
         ];
     }
 
-    return [
-        "key"=> "group_" . random_string(),
+    $json_data = [
+        "key"=> $group_name,
         "title"=> "Блок: " . $name,
         "fields"=> [
             [
-                "key"=> "field_66dc5c9057ec6",
+                "key"=> "field_" . random_string(),
                 "label"=> "Блок: " . $name,
                 "name"=> "",
                 "aria-label"=> "",
@@ -116,11 +116,13 @@ function create_json_string($name, $vars = [])
         "show_in_rest"=> 0,
         "modified"=> time()
     ];
+
+    file_put_contents(__DIR__ . '/builds/json/' . $group_name . '.json', json_encode($json_data, JSON_PRETTY_PRINT));
 }
 
 function random_string($length = 13)
 {
-    return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+    return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"), 0, $length);
 }
 
 function parse_ejs_file($file)
