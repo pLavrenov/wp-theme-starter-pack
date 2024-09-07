@@ -1,0 +1,3 @@
+/src/**/*.ejs
+/builds/blocks/*.php
+/builds/json/*.json
