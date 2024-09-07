@@ -1,5 +1,7 @@
 <?php
 
+remove_theme_support('core-block-patterns');
+
 ## Загрузка .svg в библиатеку
 add_action('upload_mimes', 'add_file_types_to_uploads');
 function add_file_types_to_uploads($file_types){
