@@ -1,0 +1,93 @@
+{
+    "key": "group_6471056181d5a",
+    "title": "Мета",
+    "fields": [
+        {
+            "key": "field_647105747595f",
+            "label": "Заголовок",
+            "name": "meta_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "Рекомендуется не более 80 символов",
+            "maxlength": ""
+        },
+        {
+            "key": "field_647105d4df4c0",
+            "label": "Описание",
+            "name": "meta_description",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "Не более 150 символов",
+            "maxlength": ""
+        },
+        {
+            "key": "field_647106681e17f",
+            "label": "Картинка",
+            "name": "meta_image",
+            "type": "image",
+            "instructions": "Рекомендуемый размер 1200х630",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 200,
+            "min_height": 200,
+            "min_size": "",
+            "max_width": 1200,
+            "max_height": 630,
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "all-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1685129413
+}
