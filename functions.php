@@ -4,9 +4,10 @@
 require_once( __DIR__ . '/types/post_types.php');
 
 ## Хелперы
-require_once(__DIR__ . '/includes/helpers/include_helper_func.php');
-require_once(__DIR__ . '/includes/helpers/include_helper_hooks.php');
-require_once(__DIR__ . '/includes/helpers/include_helper_const.php');
+require_once( __DIR__ . '/includes/helpers/include_helper_func.php');
+require_once( __DIR__ . '/includes/helpers/include_helper_hooks.php');
+require_once( __DIR__ . '/includes/helpers/include_helper_const.php');
+require_once( __DIR__ . '/includes/helpers/include_default_hooks.php');
 
 ## Hooks
 require_once(__DIR__ . '/includes/hooks/include_cf7_hooks.php');
