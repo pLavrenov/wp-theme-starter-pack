@@ -7,6 +7,14 @@ add_filter('gettext', function ($translation, $text, $domain) {
     return $translation;
 }, 20, 3);
 
+## метка для специальных страниц в таблице page записей
+add_filter('display_post_states', function ($post_states, $post) {
+    if($post->post_type === 'page' && in_array($post->post_name, get_post_types())){
+        $post_states[] = 'Архивная страница';
+    }
+    return $post_states;
+}, 10, 2 );
+
 ## Загрузка .svg в библиатеку
 add_action('upload_mimes', function ($file_types) {
     $new_filetypes = array();
