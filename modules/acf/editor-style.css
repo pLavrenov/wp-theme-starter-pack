@@ -46,9 +46,12 @@ acf-block-preview
 	border: 1px dashed #dadada;
 }
 
-.wp-block .is-selected:after {
+.wp-block:after,
+.wp-block .is-selected:after,
+.wp-block .is-selected:focus:after {
 	display: none !important;
 }
+
 .wp-block .is-selected .acf-block-fields {
 	border: #007cba solid 1px;
 }
