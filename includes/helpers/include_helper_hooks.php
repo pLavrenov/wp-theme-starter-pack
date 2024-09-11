@@ -1,5 +1,12 @@
 <?php
 
+add_filter('gettext', function ($translation, $text, $domain) {
+    if ('contact-form-7' === $domain) {
+        $translation = str_ireplace('Contact Form 7', 'Формы', $translation);
+    }
+    return $translation;
+}, 20, 3);
+
 ## Загрузка .svg в библиатеку
 add_action('upload_mimes', function ($file_types) {
     $new_filetypes = array();
