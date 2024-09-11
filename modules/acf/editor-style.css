@@ -16,6 +16,7 @@
 }
 
 .editor-visual-editor__post-title-wrapper {
+	padding: 10px;
 	background: #e2e2e2;
 	margin-top: 0 !important;
 }
@@ -31,7 +32,7 @@ acf-block-fields
 acf-block-preview
  */
 .wp-block-group__inner-container {
-	padding: 20px;
+	margin: 10px;
 	border: 1px dashed #f00;
 }
 
