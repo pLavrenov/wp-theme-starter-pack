@@ -15,23 +15,24 @@ $files = array_slice(scandir(MY_ACF_BLOCKS_PATH), 2);
 
 foreach ($files as $file)
 {
-	$name = str_replace('.php', '', $file);
-	$title = dashesToText($name, ' ');
+    $name = str_replace('.php', '', $file);
+    //$title = apply_filters('fleeks_block_title', dashesToText($name, ' '));
+    $title = apply_filters('fleeks_block_title', $name);
     acf_register_block_type([
-		'name' => $name,
-		'title' => __($title, 'fleeks_theme'),
-		'render_callback' => 'my_acf_block_render_callback',
-		'category' => 'fleeks',
-		'icon' => my_acf_block_icon_helper('admin-comments'),
+        'name' => $name,
+        'title' => __($title, 'fleeks_theme'),
+        'render_callback' => 'my_acf_block_render_callback',
+        'category' => 'fleeks',
+        'icon' => my_acf_block_icon_helper('admin-comments'),
 //        "style" => [
 //            "file:../../styles/s.css",
 //        ],
 //        "editorStyle" => "file:./editor.css",
         'mode' => 'edit',
-		'supports' => [
-			//'mode' => false,
+        'supports' => [
+            //'mode' => false,
             'jsx' => true,
             'align' => array('center', 'wide', 'full' ),
-		],
-	]);
+        ],
+    ]);
 }

@@ -39,6 +39,18 @@ add_theme_support('post-thumbnails');
 //set_post_thumbnail_size(250, 150);
 //add_image_size('big-thumb', 400, 400, true);
 
+
+
+/**
+ * Название блоков в админке
+ */
+add_filter('fleeks_block_title', function ($block_name) {
+    return match ($block_name) {
+        'title' => 'Название блока',
+        default => $block_name,
+    };
+});
+
 ## Подключение скриптов
 add_action('wp_footer', 'add_scripts');
 if (!function_exists('add_scripts')) {
