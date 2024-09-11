@@ -1,5 +1,15 @@
 <?php
 
+add_filter('allowed_block_types_all', function ($allowed_blocks, $editor_context) {
+    $files = array_slice(scandir(MY_ACF_BLOCKS_PATH), 2);
+    $array = [];
+    foreach ($files as $file) {
+        $name = str_replace('.php', '', $file);
+        $array[] = 'acf/' . $name;
+    }
+    return $array;
+}, 25, 2);
+
 add_filter('gettext', function ($translation, $text, $domain) {
     if ('contact-form-7' === $domain) {
         $translation = str_ireplace('Contact Form 7', 'Формы', $translation);

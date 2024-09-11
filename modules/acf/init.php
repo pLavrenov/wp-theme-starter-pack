@@ -10,16 +10,6 @@ include_once(MY_ACF_PATH . 'acf.php');
 
 add_editor_style(FOLDER . '/modules/acf/editor-style.css');
 
-add_filter('allowed_block_types_all', function ($allowed_blocks, $editor_context) {
-    $files = array_slice(scandir(MY_ACF_BLOCKS_PATH), 2);
-    $array = [];
-    foreach ($files as $file) {
-        $name = str_replace('.php', '', $file);
-        $array[] = 'acf/' . $name;
-    }
-    return $array;
-}, 25, 2);
-
 // Customize the url setting to fix incorrect asset URLs.
 add_filter('acf/settings/url', function ($url) {
     return MY_ACF_URL;
