@@ -1,9 +1,11 @@
 <?php
-require_once(__DIR__ . '/post_types/create_post_type.php');
-require_once(__DIR__ . '/taxonomy/create_taxonomy.php');
-//require_once(__DIR__ . '/taxonomy_list_fields/create_list_field.php');
+require_once(__DIR__ . '/post-types/register-post-types.php');
+require_once(__DIR__ . '/taxonomies/register-taxonomies.php');
+//require_once(__DIR__ . '/taxonomy-list-fields/register-list-fields.php');
 
-function taxonomy_slug_rewrite($wp_rewrite) {
+
+add_filter('generate_rewrite_rules', 'taxonomy_slug_rewrite');
+function taxonomy_slug_rewrite ($wp_rewrite) {
     $rules = array();
     // get all custom taxonomies
     $taxonomies = get_taxonomies(array('_builtin' => false), 'objects');
@@ -33,13 +35,12 @@ function taxonomy_slug_rewrite($wp_rewrite) {
     // merge with global rules
     $wp_rewrite->rules = $rules + $wp_rewrite->rules;
 }
-add_filter('generate_rewrite_rules', 'taxonomy_slug_rewrite');
 
+add_action('init', 'custom_taxonomy_flush_rewrite');
 function custom_taxonomy_flush_rewrite() {
     global $wp_rewrite;
     $wp_rewrite->flush_rules();
 }
-add_action('init', 'custom_taxonomy_flush_rewrite');
 
 /*
  * https://someweblog.com/wordpress-custom-taxonomy-with-same-slug-as-custom-post-type/
