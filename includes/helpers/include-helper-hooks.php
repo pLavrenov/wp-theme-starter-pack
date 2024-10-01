@@ -81,3 +81,13 @@ add_filter('nav_menu_submenu_css_class', function ($classes, $args, $depth) {
     }
     return $classes;
 }, 1, 3);
+
+/**
+ * Отключает видимость записей если has_single === true в конфиге register_post_type()
+ */
+add_filter('is_post_type_viewable', function($is_viewable, $post_type) {
+    if (isset($post_type->has_single) && !$post_type->has_single) {
+        return false;
+    }
+    return $is_viewable;
+}, 10, 2 );

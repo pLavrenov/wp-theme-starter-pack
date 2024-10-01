@@ -36,6 +36,9 @@ function custom_post_type() {
 
         // ACF: Extend
         'acfe_admin_archive' => false,
+
+        // Custom
+        'has_single' => false,
     ]);
 
 }
