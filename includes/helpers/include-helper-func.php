@@ -1,6 +1,11 @@
 <?php
 
 
+function get_active_menu_class($url, $class = 'active')
+{
+    return home_url($_SERVER['REQUEST_URI']) === $url ? $class : '';
+}
+
 /**
  * Retrieves the URL of an image attachment for a given post ID.
  *
