@@ -35,7 +35,7 @@ add_action('acf/init', function () {
 
 add_action('acf/init', function () {
     // Добавление блоков Gutenberg
-    if (function_exists('acf_register_block')) {
+    if (function_exists('acf_register_block_type')) {
         $files = array_slice(scandir(MY_ACF_BLOCKS_PATH), 2);
         foreach ($files as $file) {
             $name = str_replace('.php', '', $file);

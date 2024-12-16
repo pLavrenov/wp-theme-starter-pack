@@ -14,8 +14,24 @@ function fleeks_register_required_plugins() {
         ),
 
         array(
+            'name'               => 'Contact Form: Syntax Highlighting',
+            'slug'               => 'cf7-ace-syntax-highlighting',
+            'required'           => true,
+            'force_activation'   => true,
+            'force_deactivation' => true,
+        ),
+
+        array(
             'name'               => 'Duplicate Post',
             'slug'               => 'duplicate-post',
+            'required'           => true,
+            'force_activation'   => true,
+            'force_deactivation' => true,
+        ),
+
+        array(
+            'name'               => 'Rus filename and link translit',
+            'slug'               => 'rus-to-lat-advanced',
             'required'           => true,
             'force_activation'   => true,
             'force_deactivation' => true,
@@ -29,16 +45,6 @@ function fleeks_register_required_plugins() {
 //            'force_activation'   => true,
 //            'force_deactivation' => true,
 //        ),
-
-
-        array(
-            'name'               => 'Rus filename and link translit',
-            'slug'               => 'rus-to-lat-advanced',
-            'required'           => true,
-            'force_activation'   => true,
-            'force_deactivation' => true,
-        ),
-
 
 //        array(
 //            'name'               => 'Disable Gutenberg',
