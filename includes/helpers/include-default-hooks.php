@@ -30,7 +30,22 @@ add_action('admin_menu', function () {
     //remove_menu_page('wpcf7'); // Contact form 7
 }, 999);
 
-
+add_action('wp_before_admin_bar_render', function () {
+    global $wp_admin_bar;
+    if (!FLEEKS_DEV) {
+        // Plugin related admin-bar items
+        // $wp_admin_bar->remove_node('blocksy_preview_hooks');
+        // WordPress Core Items
+        $wp_admin_bar->remove_node('updates');
+        $wp_admin_bar->remove_node('comments');
+        // $wp_admin_bar->remove_node('new-content');
+        $wp_admin_bar->remove_node('wp-logo');
+        //$wp_admin_bar->remove_node('site-name');
+        //$wp_admin_bar->remove_node('my-account');
+        //$wp_admin_bar->remove_node('search');
+        $wp_admin_bar->remove_node('customize');
+    }
+});
 
 add_filter('intermediate_image_sizes', function ($sizes) {
     $targets = ['thumbnail', 'medium', 'medium_large', 'large', '1536x1536', '2048x2048'];
