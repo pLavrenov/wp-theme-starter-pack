@@ -23,5 +23,10 @@
 		</div>
 	</footer>
 <?php wp_footer(); ?>
+
+<?php if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Lighthouse') === false): ?>
+
+<?php endif; ?>
+
 </body>
 </html>
