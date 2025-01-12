@@ -5,6 +5,8 @@ add_theme_support('editor-styles');
 add_theme_support('title-tag');
 add_theme_support('align-wide');
 
+add_filter( 'admin_email_check_interval', '__return_false' );
+
 add_action('admin_menu', function () {
 
     remove_menu_page('users.php'); // Пользователи
